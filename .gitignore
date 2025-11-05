@@ -1,0 +1,46 @@
+# Build directories
+/build/
+/bin/
+/obj/
+
+# Executables
+*.out
+*.exe
+*.app
+*.o
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+CMakeLists.txt.user
+CMakeLists.txt.metadata
+Makefile
+Makefile.user
+
+# IDE or editor specific files
+.vscode/
+.idea/
+*.iml
+*.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Debug files
+*.dSYM/
+*.pdb
+*.log
+
+# Dependency directories
+/vendor/
+
+# Other ignored files
+*.swp
+*.swo
+
