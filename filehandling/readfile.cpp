@@ -3,8 +3,12 @@
 
 using namespace std;
 
-int main() {
-	ifstream is("hello.txt");
+int main(int argc, char *argv[]) {
+	if(argc < 2) {
+		cerr << "File name as argument required!" << endl;
+		return -1;
+	}
+	ifstream is(argv[1]);
 	std::string line;
 	while(std::getline(is, line)){
 		cout << line << endl;
