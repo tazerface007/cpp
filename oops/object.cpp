@@ -29,6 +29,5 @@ int main() {
 	s.setBloodGroup('A');
 	cout << "Age: " << s.getAge() << endl;
 	cout << "Blood Group: " << s.getBloodGroup() << endl;
-	cout << s << endl;
 	return 0;
 }
