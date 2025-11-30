@@ -25,8 +25,15 @@ install_arch() {
 
 install_ubuntu_debian() {
 	echo "Detected Ubuntu/Debian Linux. Installing gcc, g++, build-essential, gdb..."
-	sudo apt update -y
-	sudo apt install -y gcc g++ build-essential gdb
+	# Check if sudo is available
+    if command -v sudo >/dev/null 2>&1; then
+        SUDO_CMD="sudo"
+    else
+        SUDO_CMD=""
+    fi
+
+	$SUDO_CMD apt update -y
+	$SUDO_CMD apt install -y gcc g++ build-essential gdb
 	echo "setting up git configs"
 	git config credential.helper store
 	git config user.name $NAME
@@ -71,7 +78,7 @@ if [ -f /etc/os-release ]; then
 			install_arch
 			;;
 		ubuntu|debian)
-			install_ubuntu_debina
+			install_ubuntu_debian
 			;;
 		alpine)
 			install_alpine
