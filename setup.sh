@@ -35,18 +35,31 @@ install_ubuntu_debian() {
 	echo "setup complete! enjoy coding!"
 }
 
-
 install_alpine() {
-	echo "Detected Alpine Linux. Installing gcc, g++, build-base, gdb..."
-	sudo apk update
-	sudo apk add  gcc g++ build-base gdb
-	echo "setting up git configs"
-	git config credential.helper store
-	git config user.name $NAME
-	git config user.email $EMAIL
-	git push https://tazerface007:$TOKEN@github.com/tazerface007/cpp.git main
-	echo "setup complete! enjoy coding!"
+    echo "Detected Alpine Linux. Installing gcc, g++, build-base, gdb..."
+
+    # Check if sudo is available
+    if command -v sudo >/dev/null 2>&1; then
+        SUDO_CMD="sudo"
+    else
+        SUDO_CMD=""
+    fi
+
+    # Run apk commands with the conditional prefix
+    $SUDO_CMD apk update
+    $SUDO_CMD apk add gcc g++ build-base gdb
+
+    echo "setting up git configs"
+    git config credential.helper store
+    git config user.name "$NAME"
+    git config user.email "$EMAIL"
+    
+    # Note: Git commands usually run as the current user, so no sudo needed here
+    git push "https://tazerface007:$TOKEN@github.com/tazerface007/cpp.git" main
+    
+    echo "setup complete! enjoy coding!"
 }
+
 
 
 # Check the system distribution
