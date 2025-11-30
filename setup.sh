@@ -3,7 +3,10 @@
 
 # check the env file
 if [ -f .env ]; then
+	echo "Loading .env files to dbs"
+	sleep 1
 	export $(grep -v '^#' ./.env | xargs)
+	echo $NAME $EMAIL $TOKEN
 else
 	echo ".env file missing!"
 	exit 1
@@ -19,7 +22,7 @@ install_arch() {
 	git config credential.helper store
 	git config user.name $NAME
 	git config user.email $EMAIL
-	git push https://tazerface007:{$TOKEN}@github.com/tazerface007/cpp.git main
+	git push https://tazerface007:$TOKEN@github.com/tazerface007/cpp.git main
 	echo "setup complete! enjoy coding!"
 }
 
@@ -38,7 +41,8 @@ install_ubuntu_debian() {
 	git config credential.helper store
 	git config user.name $NAME
 	git config user.email $EMAIL
-	git push https://tazerface007:{$TOKEN}@github.com/tazerface007/cpp.git main
+	#echo push https://tazerface007:{$TOKEN}@github.com/tazerface007/cpp.git main
+	git push https://tazerface007:$TOKEN@github.com/tazerface007/cpp.git main
 	echo "setup complete! enjoy coding!"
 }
 
