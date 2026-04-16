@@ -22,6 +22,10 @@ void append() {
 
 
 int main() {
-	append();
+//	append();
+	ofstream os("Test.txt", std::ios::out);
+	os << "Hello World!" << endl;
+	os << "How are you? Hope you are doing well" << endl;
+	os.close();
 	return 0;
 }
